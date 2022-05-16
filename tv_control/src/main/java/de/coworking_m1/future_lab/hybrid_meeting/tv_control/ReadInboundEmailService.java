@@ -30,13 +30,15 @@ import javax.mail.Message;
 public class ReadInboundEmailService {
     private Store store = null;
 
+    private String password = "";
+
     @PostConstruct
     public void connect(){
         Session session = this.getImapSession();
 
         try {
             store = session.getStore("imap");
-            store.connect("web2.ipp-webspace.net", 993, "hybrid-meeting@synthro.coop", "ksD6l33&");
+            store.connect("web2.ipp-webspace.net", 993, "hybrid-meeting@synthro.coop", password);
         } catch (NoSuchProviderException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
